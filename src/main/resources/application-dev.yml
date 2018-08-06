@@ -1,0 +1,23 @@
+    
+spring: 
+  datasource: 
+    url: jdbc:mysql://172.16.117.127:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa: 
+    properties: 
+      hibernate: 
+        hbm2ddl: 
+          auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    
+#自定义参数
+testuser: 
+  id: 11
+  username: 悟空
+  password: 110
+  
+param: 这是一个yml参数
