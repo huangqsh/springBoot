@@ -1,10 +1,7 @@
 package org.huangqsh.springBoot.service;
 
-import javax.annotation.Resource;
-
 import org.huangqsh.springBoot.Application;
 import org.huangqsh.springBoot.dao.IUserDao;
-import org.huangqsh.springBoot.entity.TestUser;
 import org.huangqsh.springBoot.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,18 +12,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TestBoot {
-	@Resource
+	
+	@Autowired
 	private IUserDao userDao;
-	@Autowired
-	private TestUser tuser;
-	@Autowired
-	private UserService userService;
-
+	
 	@Test
 	public void test1() {
-		System.out.println(tuser.getUsername());
-		User user = userService.findByUsername("admin");
+		User user = userDao.findByUsername("悟空");
 		System.out.println(user);
 	}
-
+	@Test
+	public void test2() {
+		System.out.println(userDao.getUsernameById2(1));
+	}
 }

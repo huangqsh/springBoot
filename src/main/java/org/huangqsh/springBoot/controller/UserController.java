@@ -3,7 +3,7 @@ package org.huangqsh.springBoot.controller;
 import org.huangqsh.springBoot.dao.IUserDao;
 import org.huangqsh.springBoot.entity.TestUser;
 import org.huangqsh.springBoot.entity.User;
-import org.huangqsh.springBoot.exception.ControllerExceptionModel;
+import org.huangqsh.springBoot.exception.ControllerException;
 import org.huangqsh.springBoot.model.ReturnModel;
 import org.huangqsh.springBoot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ public class UserController {
 	private IUserDao userDao;
 	@Autowired
 	private UserService userService;
+	
 	@Autowired
 	private TestUser tuser;
 	@Value("${param}")
@@ -30,8 +31,7 @@ public class UserController {
 	
 	@RequestMapping("/findUserByName")
 	public ReturnModel findUserByName() {
-		System.out.println(param);
-		User user = userDao.findByUsername("admin");
+		User user = userService.findByUsername("admin");
 		return new ReturnModel("1", "success", user);
 	}
 	
@@ -50,6 +50,6 @@ public class UserController {
 	
 	@RequestMapping("/exception2")
 	public String exception2() {
-		throw new ControllerExceptionModel();
+		throw new ControllerException();
 	}
 }

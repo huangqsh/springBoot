@@ -2,7 +2,7 @@ package org.huangqsh.springBoot.service;
 
 import org.huangqsh.springBoot.dao.IUserDao;
 import org.huangqsh.springBoot.entity.User;
-import org.huangqsh.springBoot.exception.ServiceExceptionModel;
+import org.huangqsh.springBoot.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class UserService {
 	}
 
 	public void getServiceException() {
-		throw new ServiceExceptionModel();		
+		throw new ServiceException();		
 	}
 	
 }
